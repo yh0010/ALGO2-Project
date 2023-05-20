@@ -1,1 +1,96 @@
-hello world
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Algo2 Project</title>
+        <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <section id="title-section">
+          <h1>Z Algorithm</h1>
+        </section>
+      
+        <div id="author-info">
+            <span>AUTHOR: Elaina Huang</span>
+            <span>AFFILIATION: NYU</span>
+            <span>ALGO2 Course Project</span>
+        </div>
+        
+        <div id="algorithm-info">
+            <h1>What is Z Algorithm</h1>
+            <div class="content">
+                <p>The Z algorithm, an efficient string matching mechanism, operates in linear time, specifically O(n + m), to locate all occurrences of a given pattern within a string. 
+                    This algorithm is built on the premise of the Z-array, which is the same length as the input string. Each element, Z[k], 
+                    of this Z-array signifies the length of the longest matching substring that begins from the input string's corresponding index.</p>
+                    <p>The procedure to construct the Z-array involves several steps. 
+                        Initially, a new string is crafted by merging the pattern, a distinct character not found within the pattern or the text (represented by '$'), 
+                        and the text itself. For instance, if the pattern is "abc" and the text is "abcabcabc", the assembled string would be "abc$abcabcabc".</p>
+                    <p>Following this, the Z-array is initialized with all elements set to zero, and its length equivalent to the length of the newly formulated string. 
+                        A left-to-right iteration is then performed on the new string. For every character, it's compared with the corresponding character in the prefix. 
+                        If a match is found, the Z-value at that index is incremented. If not, the incrementation ceases.</p>
+                    <p>In the processing of the Z-array, two major cases are encountered.</p> 
+                    <p>Case 1: If k > r, which means there's no pattern substring that covers the character of the Z-array at index k (no Z-box 'leaps over' k). 
+                        In this case, an attempt is made to match z-array[k] to z-array[0] and calculate the number of matching characters starting from index k.</p>
+                    <p>Case 2: If k ≤ r, meaning there's a pattern substring that envelops the character of the Z-array at index k (a Z-box 'leaps over' k). 
+                        Here, we examine the index k' = k - l in the Z-array, and two sub-cases can emerge:</p>
+                    <p>a) If Z-array[k'] < B where B = r - k + 1, it is clear that no prefix substring begins at Z-array[k], as otherwise, Z-array[k'] would be larger. 
+                        Hence, we can carry over our previously calculated values so Z-array[k] = Z-array[k'] and both l and r remain static.</p>
+                    <p>b) If Z-array[k'] ≥ B where B = r - k + 1, it suggests that we can extend our Z-box at k, and so we start matching Z-array[k] to Z-array[0],
+                         update r = k + j, where j represents the number of prefix characters that match starting at Z-array[k].</p>
+                    <p>The completed Z-array is then used to identify all instances of the pattern in the text. 
+                        A position in the Z-array with a value equivalent to the pattern's length is indicative of a match. For example, 
+                        if the pattern is "abc" and the text is "abcabcabc", the resultant Z-array may look like [0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 3, 0, 0], 
+                        where the 3s represent matches of the pattern in the text.</p>     
+            </div>
+        </div>      
+        <div id="algorithm-info">
+            <img src="zalgo.gif" alt="Gif related to Z Algorithm">
+            <h1>Let's try it yourself</h1>
+        </div>
+        <section id="interactive-section">
+            <label for="text">Text:</label><br>
+            <input type="text" id="text" class="input-box" placeholder="Input a string, REQUIRED. Ex. aabaab" required><br>
+            <label for="pattern">Pattern:</label><br>
+            <input type="text" id="pattern" class="input-box" placeholder="Input a string, OPTIONAL. Ex. aab"><br>
+            <button onclick="search()">Search</button>
+            <table id="output">
+              <tr>
+                <br> Click search to generte new table content
+              </tr>
+            </table>
+          </section>
+        
+        <div id="pattern-output"></div>
+
+        <div id="pattern-output">
+            <h1>DNA Sequence pattern matching...not finished</h1>
+            <svg height="200" width="2000">
+              <!-- DNA sequence -->
+              <text x="0" y="50" fill="black" id="dna-sequence">ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT</text>
+          
+              <!-- Highlighted sequence -->
+              <text x="0" y="50" fill="transparent" id="highlighted-sequence">
+                ACGT
+                <!-- Animate the first matching sequence -->
+                <tspan fill="red">
+                  <animate attributeName="fontSize" values="20;40;20" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="fill" values="black;red;black" dur="2s" repeatCount="indefinite" />
+                  ACGT
+                </tspan>
+                ACGTACGTACGT
+                <!-- Animate the second matching sequence -->
+                <tspan fill="red">
+                  <animate attributeName="fontSize" values="20;40;20" dur="2s" repeatCount="indefinite" begin="1s"/>
+                  <animate attributeName="fill" values="black;red;black" dur="2s" repeatCount="indefinite" begin="1s"/>
+                  ACGT
+                </tspan>
+                ACGTACGTACGT
+              </text>
+            </svg>
+          </div>
+          
+
+          <script src="interact.js"></script>
+      </body>
+      
+</html>

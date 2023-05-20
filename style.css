@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #title-section {
+    background: linear-gradient(to bottom, purple, white); /* Gradient from purple to white */
+    height: 500px; /* Adjust this as per your design requirements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Adjust text color as per your design requirements */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Helps the text stand out against the background */
+  }
+  
+  
+  #title-section h1 {
+    font-size: 3em;
+  }
+  
+  #author-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+#algorithm-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    margin-bottom: 50px;
+}
+
+#algorithm-info h1 {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
+#algorithm-info .content {
+    text-align: left;
+    max-width: 800px;
+}
+
+#algorithm-info .content p, #algorithm-info .content li {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+  
+  #interactive-section {
+    background-color: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #interactive-section input[type="text"] {
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    width: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px 4px rgba(0,0,255,0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  #interactive-section input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px lightblue;
+  }
+  
+  #interactive-section button {
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    width: 150px;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #interactive-section button:hover {
+    background-color: darkpurple;
+  }
+
+  #output {
+    border-collapse: collapse;
+    margin: 50px auto;
+    width: 80%;
+  }
+  
+  #output th, #output td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  #output th {
+    background-color: purple;
+    color: white;
+  }
+  
+  #output tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  #pattern-output {
+    width: 80%;
+    height: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    text-align: center;
+  }
+  
+  #pattern-output::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  #pattern-output::-webkit-scrollbar-thumb {
+    background-color: purple;
+    border-radius: 10px;
+  }
+  
+  #pattern-output::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .input-box:invalid {
+    border: 2px solid red;
+    box-shadow: 0 0 5px red;
+}
