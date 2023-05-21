@@ -17,7 +17,7 @@
         </div>
         
         <div id="algorithm-info">
-            <h1>What is Z Algorithm</h1>
+            <h1>What is Z Algorithm?</h1>
             <div class="content">
                 <p>The Z algorithm, an efficient string matching mechanism, operates in linear time, specifically O(n + m), to locate all occurrences of a given pattern within a string. 
                     This algorithm is built on the premise of the Z-array, which is the same length as the input string. Each element, Z[k], 
@@ -60,36 +60,80 @@
             </table>
           </section>
         
-        <div id="pattern-output"></div>
-
         <div id="pattern-output">
-            <h1>DNA Sequence pattern matching...not finished</h1>
-            <svg height="200" width="2000">
-              <!-- DNA sequence -->
-              <text x="0" y="50" fill="black" id="dna-sequence">ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT</text>
-          
-              <!-- Highlighted sequence -->
-              <text x="0" y="50" fill="transparent" id="highlighted-sequence">
-                ACGT
-                <!-- Animate the first matching sequence -->
-                <tspan fill="red">
-                  <animate attributeName="fontSize" values="20;40;20" dur="2s" repeatCount="indefinite" />
-                  <animate attributeName="fill" values="black;red;black" dur="2s" repeatCount="indefinite" />
-                  ACGT
-                </tspan>
-                ACGTACGTACGT
-                <!-- Animate the second matching sequence -->
-                <tspan fill="red">
-                  <animate attributeName="fontSize" values="20;40;20" dur="2s" repeatCount="indefinite" begin="1s"/>
-                  <animate attributeName="fill" values="black;red;black" dur="2s" repeatCount="indefinite" begin="1s"/>
-                  ACGT
-                </tspan>
-                ACGTACGTACGT
-              </text>
-            </svg>
-          </div>
-          
+            <tr>
+                <br> Output will show here
+            </tr>
+        </div>
+        
+        <div id="container">
+        <div id="left">
+            <h1>Use Case: DNA Sequence Matching</h1>
 
+            <p>The Z algorithm can be an effective method for DNA sequence matching due to its linear time complexity, 
+                which makes it suitable for analyzing large sequences typical in genomic data. When applied to DNA sequence matching, 
+                the 'main string' would be the reference DNA sequence and the 'pattern string' would be the DNA sequence of interest. 
+                By sliding over the DNA sequences and comparing substrings, the Z algorithm can efficiently find all occurrences of the DNA sequence of interest in the reference DNA sequence. 
+                Its strength lies in its ability to quickly eliminate areas of the sequence that don't match, thereby reducing the number of unnecessary comparisons, 
+                which is especially beneficial in bioinformatics due to the vast amounts of data involved.</p>
+        </div>               
+
+          
+  
+        <div id="right">
+        <div style="position: relative;">
+            <img src="line.png" style="position: absolute; width: 100%; height: auto; z-index: 1;"/>
+        
+            <svg height="300" width="1000" viewBox="0 0 200 60" style="position: absolute; z-index: 2;">
+        <path id="dnaPath1" d="M10,30 Q29,-10 60,32 Q55,30 70,50 Q80,56 89,55 Q110,54 120,27 Q145,-10 188,34 Q90,20 190,20" stroke="black" fill="transparent" stroke-width="0"/>
+        <path id="dnaPath2" d="M7,31 Q25,75 64,30 Q100,-10 120,40 Q160,72 186,25 Q19,40 110,45 Q145,50 160,40 Q175,30 190,40" stroke="black" fill="transparent" stroke-width="0"/>
+        
+        <text font-size="4">
+            <textPath id="dnaText1" href="#dnaPath1">
+            </textPath>
+        </text>
+        <text font-size="4">
+            <textPath id="dnaText2" href="#dnaPath2">
+            </textPath>
+        </text>
+    </svg>
+  </div>
+
+  
+  <script>
+    const dnaSeq = 'ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACG';
+    const dnaArray = dnaSeq.match(/.{1,4}/g); // Break the string into segments of "ACGT"
+    
+    const textElement1 = document.getElementById('dnaText1');
+    const textElement2 = document.getElementById('dnaText2');
+    
+    let index = 0;
+    
+    setInterval(() => {
+        let updatedSeq1 = '';
+        let updatedSeq2 = '';
+        
+        for (let i = 0; i < dnaArray.length; i++) {
+            if (i === index) {
+                updatedSeq1 += '<tspan style="fill:red">' + dnaArray[i] + '</tspan>';
+                updatedSeq2 += '<tspan style="fill:red">' + dnaArray[i] + '</tspan>';
+            } else {
+                updatedSeq1 += dnaArray[i];
+                updatedSeq2 += dnaArray[i];
+            }
+        }
+        
+        textElement1.innerHTML = updatedSeq1;
+        textElement2.innerHTML = updatedSeq2;
+        
+        index = (index + 1) % dnaArray.length;
+    }, 500); // Change this to control the speed of the blinking effect
+</script>
+</div>
+</div>
+
+  
+                       
           <script src="interact.js"></script>
       </body>
       

@@ -255,3 +255,16 @@ function search() {
         }
     }
 }
+
+var starCount = 100; 
+
+for (var i = 0; i < starCount; i++) {
+  var star = document.createElement("div");
+  star.className = "star";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.animationDelay = (Math.random() * 10) + "s"; /* Updated to match new animation duration */
+  star.style.animationDuration = (Math.random() * 3 + 2) + "s"; /* Updated to match new animation duration */
+  star.style.animationTimingFunction = `cubic-bezier(${Math.random()}, ${Math.random()}, ${Math.random()}, ${Math.random()})`;
+  document.getElementById('title-section').appendChild(star);
+}
