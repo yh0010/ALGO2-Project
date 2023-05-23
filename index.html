@@ -4,10 +4,53 @@
         <title>Algo2 Project</title>
         <link rel="shortcut icon" type="image/png" href="assets/logo.png">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            /* Additional style for the reference section and button */
+            #reference-section {
+              border: 1px dashed gray; /* Change border style to dashed */
+              padding-left: 20px; /* Add padding to left side for indentation */
+              margin-top: 30px; /* Add margin to top for separation from the rest of the content */
+            }
+      
+            #reference-section h2 {
+              color: gray;
+            }
+
+            #reference-section h4 {
+              color: gray;
+            }
+      
+            #reference-section a {
+              color: rgb(75, 62, 62);
+              font-size: small;
+            }
+          .github-button {
+            display: block;
+            width: 120px;  /* Set a specific width for the button */
+            margin: 0 auto;
+            margin-top: 20px; /* Adjust this value to move the button up or down */
+            padding: 10px 0;  /* Adjust padding here to control the height of the button */
+            font-size: 20px; /* Increase font size to make the text bigger */
+            color: #4e4c4c;
+            background-color: transparent; /* Make the button transparent */
+            border: 0.5px solid #686767;
+            text-shadow: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            text-align: center;  /* Center the text within the button */
+          }
+          .github-button:hover {
+            background-color: rgba(134, 85, 155, 0.413);
+          }
+        </style>
     </head>
+    
+    
     <body>
         <section id="title-section">
-          <h1>Z Algorithm</h1>
+          <h1>Z Algorithm
+          <a href="https://github.com/yh0010/ALGO2-Project" class="github-button">GitHub</a></h1>
         </section>
       
         <div id="author-info">
@@ -31,11 +74,11 @@
                     <p>In the processing of the Z-array, two major cases are encountered.</p> 
                     <p>Case 1: If k > r, which means there's no pattern substring that covers the character of the Z-array at index k (no Z-box 'leaps over' k). 
                         In this case, an attempt is made to match z-array[k] to z-array[0] and calculate the number of matching characters starting from index k.</p>
-                    <p>Case 2: If k ≤ r, meaning there's a pattern substring that envelops the character of the Z-array at index k (a Z-box 'leaps over' k). 
+                    <p>Case 2: If k <= r, meaning there's a pattern substring that envelops the character of the Z-array at index k (a Z-box 'leaps over' k). 
                         Here, we examine the index k' = k - l in the Z-array, and two sub-cases can emerge:</p>
                     <p>a) If Z-array[k'] < B where B = r - k + 1, it is clear that no prefix substring begins at Z-array[k], as otherwise, Z-array[k'] would be larger. 
                         Hence, we can carry over our previously calculated values so Z-array[k] = Z-array[k'] and both l and r remain static.</p>
-                    <p>b) If Z-array[k'] ≥ B where B = r - k + 1, it suggests that we can extend our Z-box at k, and so we start matching Z-array[k] to Z-array[0],
+                    <p>b) If Z-array[k'] >= B where B = r - k + 1, it suggests that we can extend our Z-box at k, and so we start matching Z-array[k] to Z-array[0],
                          update r = k + j, where j represents the number of prefix characters that match starting at Z-array[k].</p>
                     <p>The completed Z-array is then used to identify all instances of the pattern in the text. 
                         A position in the Z-array with a value equivalent to the pattern's length is indicative of a match. For example, 
@@ -79,25 +122,24 @@
         </div>               
 
           
-  
+
         <div id="right">
-        <div style="position: relative;">
-            <img src="line.png" style="position: absolute; width: 100%; height: auto; z-index: 1;"/>
+            <div style="position: relative;">
+                <svg height="300" width="1000" viewBox="0 0 200 60" style="position: absolute; z-index: 3;">
+                    <path id="dnaPath1" d="M10,30 Q29,-10 60,32 Q55,30 70,50 Q80,56 89,55 Q110,54 120,27 Q145,-10 188,34 Q90,20 190,20" stroke="black" fill="transparent" stroke-width="0"/>
+                    <path id="dnaPath2" d="M7,31 Q25,75 64,30 Q100,-10 120,40 Q160,72 186,25 Q19,40 110,45 Q145,50 160,40 Q175,30 190,40" stroke="black" fill="transparent" stroke-width="0"/>
+                    
+                    <text font-size="4">
+                        <textPath id="dnaText1" href="#dnaPath1"></textPath>
+                    </text>
+                    <text font-size="4">
+                        <textPath id="dnaText2" href="#dnaPath2"></textPath>
+                    </text>
+                </svg>
+            </div>
+        </div>
         
-            <svg height="300" width="1000" viewBox="0 0 200 60" style="position: absolute; z-index: 2;">
-        <path id="dnaPath1" d="M10,30 Q29,-10 60,32 Q55,30 70,50 Q80,56 89,55 Q110,54 120,27 Q145,-10 188,34 Q90,20 190,20" stroke="black" fill="transparent" stroke-width="0"/>
-        <path id="dnaPath2" d="M7,31 Q25,75 64,30 Q100,-10 120,40 Q160,72 186,25 Q19,40 110,45 Q145,50 160,40 Q175,30 190,40" stroke="black" fill="transparent" stroke-width="0"/>
         
-        <text font-size="4">
-            <textPath id="dnaText1" href="#dnaPath1">
-            </textPath>
-        </text>
-        <text font-size="4">
-            <textPath id="dnaText2" href="#dnaPath2">
-            </textPath>
-        </text>
-    </svg>
-  </div>
 
   
   <script>
@@ -129,8 +171,18 @@
         index = (index + 1) % dnaArray.length;
     }, 500); // Change this to control the speed of the blinking effect
 </script>
+
+
+
 </div>
 </div>
+
+<section id="reference-section">
+    <h4> Reference</h4>
+    <p><small><a href="https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/#">1. Z Algorithm Code Base Reference</a></small></p>
+    <p><small><a href="https://freefrontend.com/css-snow-effects/">2. Star Falling Effect</a></small></p>
+    <p><small><a href="https://codepen.io/">3. Red Blinking String Effect</a></small></p>
+</section>
 
   
                        

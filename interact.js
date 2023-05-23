@@ -268,3 +268,4 @@ for (var i = 0; i < starCount; i++) {
   star.style.animationTimingFunction = `cubic-bezier(${Math.random()}, ${Math.random()}, ${Math.random()}, ${Math.random()})`;
   document.getElementById('title-section').appendChild(star);
 }
+//<img src="line.png" style="position: absolute; width: 100%; height: auto; z-index: 2;"/>
